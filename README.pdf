@@ -1,0 +1,27 @@
+Zach Sipper - 811873218
+
+Structure and IPC
+#######################
+
+The IPC I generated is dependant on communication through pipes.
+First, the program determines the workload and divides it among the specified number of child processes.
+Second, it makes a pipe array scaled to the number of child processes.
+Then, it loops to create the appropriate number of processes.
+Next, all of the children are tasked with counting their section of the provided file.
+
+Parent waits until all the children are terminated, then it totals the counts from the pipes.
+Finally, Parent displays the results.
+
+
+Crash Handling
+#######################
+
+Currently, the crash handling has errors. It works most of the time, but i spent two entire days trying to debug to no avail.
+
+Its errors pop up more frequently as you increase the number of processes.
+
+The crash handling uses waitpid(), it monitors the status variable while waiting for all the processes to finish.
+If a child process produces a status 134 (crash), then it stores the pid of that child in a variable called crashed_pid.
+Then it loops over an array of the child pids to find the index of that child so that the parent knows which part of the task was the crashed child's.
+Then it forks to create a new child, and uses the same code from the original child if statement to employ the child with the original one's work.
+Then the array of child pids is updated with the new child.

@@ -1,5 +1,5 @@
 ###How to Download and Run
-1. set up remote, and pull code from git
+1. clone from git
 2. "$make" to compile the code
 3. "$./wc <name of file> <no. of threads> <crash percentage>" to run in command line,
     type crash percentage as a whole number eg. 25 = 25% crash rate.

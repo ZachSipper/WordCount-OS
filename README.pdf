@@ -1,4 +1,8 @@
-Zach Sipper - 811873218
+###How to Download and Run
+1. set up remote, and pull code from git
+2. "$make" to compile the code
+3. "$./wc <name of file> <no. of threads> <crash percentage>" to run in command line,
+    type crash percentage as a whole number eg. 25 = 25% crash rate.
 
 Structure and IPC
 #######################
@@ -18,6 +22,8 @@ Crash Handling
 
 The crash handling uses waitpid(), it monitors the status variable while waiting for all the processes to finish.
 If a child process produces a status 134 (crash), then it stores the pid of that child in a variable called crashed_pid.
-Then it loops over an array of the child pids to find the index of that child so that the parent knows which part of the task was the crashed child's.
+Then it loops over an array of the child pids to find the index of that child so that the parent knows which part of the
+task was the crashed child's responsiblility.
 Then it forks to create a new child, and uses the same code from the original child if statement to employ the child with the original one's work.
 Then the array of child pids is updated with the new child.
+Parent then continues to wait for the updated children array to terminate. 

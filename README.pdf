@@ -4,6 +4,7 @@
 3. "$./wc <name of file> <no. of threads> <crash percentage>" to run in command line,
     type crash percentage as a whole number eg. 25 = 25% crash rate.
 
+
 Structure and IPC
 #######################
 

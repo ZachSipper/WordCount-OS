@@ -1,5 +1,3 @@
-*Disclaimer* This code must be run in a Linux environment. I implemented it using Linux syscalls.
-
 ### How to Download and Run
 1. clone from git
 2. "$make" to compile the code
